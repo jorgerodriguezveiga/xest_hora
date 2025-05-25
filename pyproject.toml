@@ -1,0 +1,20 @@
+[project]
+name = "xest_hora"
+version = "0.1.0"
+description = """Package for optimizing school schedules."""
+authors = [
+    {name = "Jorge Rodriguez Veiga", email = "jorge.rodriguez.veiga@gmail.com"},
+]
+dependencies = [
+    "plotly",
+    "pandas",
+    "pyomo>=6.8.0",
+    "kaleido", # Guardar plot
+    "streamlit>=1.22",
+    "altair==4.2.2",
+    "pyyaml",
+]
+requires-python = ">=3.9"
+
+[tool.pdm.scripts]
+xest_hora = {call = "xest_hora.main:main"}
