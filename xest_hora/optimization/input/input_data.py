@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 import pandas as pd
 
-from xest_hora.input.calendar_tasks import CalendarTasks
-from xest_hora.input.fixed_teacher_calendar_task_day_times import FixedTeacherCalendarTaskDayTimes
-from xest_hora.input.playtime import Playtime
-from xest_hora.input.teacher_calendar_tasks import TeacherCalendarTasks
+from xest_hora.optimization.input.calendar_tasks import CalendarTasks
+from xest_hora.optimization.input.fixed_teacher_calendar_task_day_times import FixedTeacherCalendarTaskDayTimes
+from xest_hora.optimization.input.playtime import Playtime
+from xest_hora.optimization.input.teacher_calendar_tasks import TeacherCalendarTasks
 
 
 @dataclass

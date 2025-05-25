@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from xest_hora.optimization_model import OptimizationModel
-from xest_hora.example import example
+from xest_hora.optimization.optimization_model import OptimizationModel
+from xest_hora.optimization.example import example
 import logging as log
 
 

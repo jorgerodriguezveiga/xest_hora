@@ -1,4 +1,4 @@
-from xest_hora.aggregation import Aggregation
+from xest_hora.optimization.aggregation import Aggregation
 
 
 class TeacherCalendarTasks(Aggregation):

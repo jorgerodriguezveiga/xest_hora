@@ -14,8 +14,8 @@ from pyomo.environ import (
 import pandas as pd
 import functools
 
-from xest_hora.input.input_data import InputData
-from xest_hora.output.calendar import Calendar
+from xest_hora.optimization.input.input_data import InputData
+from xest_hora.optimization.output.calendar import Calendar
 
 
 def check_constraint_expression_decorator(func):

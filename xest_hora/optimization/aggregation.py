@@ -4,8 +4,7 @@ import pandas as pd
 from typing import Union
 
 # Package modules
-from optimization_autobots.observability import get_logger
-from optimization_autobots.domain.dataframe_utils import safe_merge
+import logging as log
 
 
 class Aggregation:
@@ -408,7 +407,7 @@ class Aggregation:
         # Warning with unknown columns
         unknown_columns = [c for c in data.columns if c not in self._columns]
         if len(unknown_columns) > 0:
-            get_logger().warning(
+            log.warning(
                 f"[{self.__class__.__name__}] " f"Unknown columns: " f"{', '.join([str(e) for e in unknown_columns])}"
             )
 
@@ -455,7 +454,7 @@ class Aggregation:
         # Update missing information with default values
         unknown_columns = [c for c in self._columns if c not in data.columns]
         for c in unknown_columns:
-            get_logger().warning(
+            log.warning(
                 f"[{self.__class__.__name__}] "
                 f"No information for column {c}. "
                 f"Set default value: {self._default_column_values[c]}"
@@ -697,7 +696,7 @@ class Aggregation:
             1       1       30        3
         """
         if len(self._indices) == 0:
-            get_logger().warning("There are no indices to update the data")
+            log.warning("There are no indices to update the data")
         else:
             data = self._validate_data(data, add_missing_columns=False)
             current_data_idx = self._data.set_index(self._indices)
@@ -778,14 +777,14 @@ class Aggregation:
             if isinstance(aggregation, Aggregation):
                 common_idx = list(set(self._indices).intersection(aggregation._indices))
                 if len(common_idx) > 0:
-                    data = safe_merge(data, aggregation.data, how="left", on=common_idx)
+                    data = pd.merge(data, aggregation.data, how="left", on=common_idx)
                 else:
-                    get_logger().warning(
+                    log.warning(
                         f"No common idx between '{self.__class__.__name__}' "
                         f"and '{aggregation.__class__.__name__}' aggregation"
                     )
             else:
-                get_logger().warning(f"{aggregation.__class__.__name__} is not a subclass of " "Aggregation")
+                log.warning(f"{aggregation.__class__.__name__} is not a subclass of " "Aggregation")
         return data
 
     def copy(self):

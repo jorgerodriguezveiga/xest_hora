@@ -1,5 +1,5 @@
 from pandas import unique
-from xest_hora.aggregation import Aggregation
+from xest_hora.optimization.aggregation import Aggregation
 import plotly.graph_objects as go
 
 
